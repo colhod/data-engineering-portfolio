@@ -3,7 +3,11 @@ select
     title,
     artist,
     album,
-    genre,
+    case
+        when nullif(trim(genre), '') is null then 'Unknown'
+        when lower(trim(genre)) = 'hip hop' then 'Hip-Hop'
+        else trim(genre)
+    end as genre,
     nullif(year, '')::integer as year,
     nullif(duration, '')::integer as duration_seconds,
     suffix as file_format,
