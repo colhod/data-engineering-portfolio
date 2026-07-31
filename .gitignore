@@ -221,3 +221,4 @@ __marimo__/
 # Airflow local state (Project 3)
 project-3-orchestration-testing/airflow-data/
 project-3-orchestration-testing/logs/
+project-3-orchestration-testing/dbt-profile/
