@@ -13,11 +13,12 @@ services:
     ports:
       - "8090:8080"
     volumes:
+      - ./dbt-profile:/home/airflow/.dbt
       - ./dags:/opt/airflow/dags
       - ./logs:/opt/airflow/logs
       - ./airflow-data:/opt/airflow
       - ../project-1-media-library-pipeline:/opt/airflow/project-1-media-library-pipeline
     command: >
       bash -c "airflow db init &&
-      airflow users create --username admin --password admin --firstname Colin --lastname Hodge --role Admin --email colinhodge1981@gmail.com &&
+      rm -f /opt/airflow/airflow-webserver.pid &&
       airflow webserver & airflow scheduler"
